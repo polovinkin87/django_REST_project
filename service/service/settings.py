@@ -15,6 +15,36 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "style": "{",
+        }
+    },
+    "handlers": {
+        "file_log": {
+            "level": "WARNING",
+            "class": "logging.FileHandler",
+            "filename": "C:/Users/Половинкины/Desktop/django-rest-framework-project/service/log.log",
+            "formatter": "verbose",
+        }
+    },
+    "loggers": {
+        "users": {
+            "handlers": ["file_log"],
+            "level": "WARNING",
+            "propagate": True,
+        },
+        "todoapp": {
+            "handlers": ["file_log"],
+            "level": "WARNING",
+            "propagate": True,
+        },
+    },
+}
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -35,11 +65,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #other
+    # other
     'rest_framework',
     'corsheaders',
-    #my
+    # my
     'users',
+    'todoapp',
 ]
 
 MIDDLEWARE = [
@@ -120,5 +151,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ALLOWED_ORIGINS = [
-   "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:3000",
 ]
