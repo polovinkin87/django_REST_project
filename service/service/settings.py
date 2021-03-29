@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     # other
     'rest_framework',
     'corsheaders',
+    'django_filters',
     # my
     'users',
     'todoapp',
@@ -149,6 +150,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
