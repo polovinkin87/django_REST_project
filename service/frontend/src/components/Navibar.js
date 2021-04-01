@@ -6,12 +6,11 @@ function Navibar() {
     return (
     <>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand>TODO notes</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link><Link to="/">Home</Link></Nav.Link>
-                    <Nav.Link><Link to="/users">Users</Link></Nav.Link>
+                    <Nav.Link><Link to="/">Users</Link></Nav.Link>
+                    <Nav.Link><Link to="/projects">Projects</Link></Nav.Link>
+                    <Nav.Link><Link to="/todos">TODOs</Link></Nav.Link>
                 </Nav>
                 <Nav>
                     <Button variant="primary" className="mr-2">Log In</Button>
