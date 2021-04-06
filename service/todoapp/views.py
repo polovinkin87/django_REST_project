@@ -5,7 +5,7 @@ from .serializers import ProjectModelSerializer, ToDoModelSerializer
 import logging
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import TodoFilter
 
@@ -23,6 +23,7 @@ class ToDoPagination(PageNumberPagination):
 class ProjectModelViewSet(ModelViewSet):
     logger.warning("hello project!")
     queryset = Project.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = ProjectModelSerializer
     pagination_class = ProjectPagination
 
