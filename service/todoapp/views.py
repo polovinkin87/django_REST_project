@@ -23,13 +23,13 @@ class ToDoPagination(PageNumberPagination):
 class ProjectModelViewSet(ModelViewSet):
     logger.warning("hello project!")
     queryset = Project.objects.all()
-    permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     serializer_class = ProjectModelSerializer
     pagination_class = ProjectPagination
 
     def get_queryset(self):
         queryset = Project.objects.all()
-        name = self.request.query_params.get('name', None)
+        name = self.request.query_params.get('name', '')
         if name:
             queryset = queryset.filter(name__contains=name)
         return queryset

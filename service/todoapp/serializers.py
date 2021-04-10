@@ -4,7 +4,7 @@ from .models import Project
 from .models import ToDo
 
 
-class ProjectModelSerializer(HyperlinkedModelSerializer):
+class ProjectModelSerializer(ModelSerializer):
     # users = HyperlinkedRelatedField(many=True, view_name="user-detail", read_only=True)
 
     class Meta:
@@ -13,7 +13,7 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
         fields = "__all__"
 
 
-class ToDoModelSerializer(HyperlinkedModelSerializer):
+class ToDoModelSerializer(ModelSerializer):
     # project = HyperlinkedIdentityField(view_name="project-detail")
     # creator = HyperlinkedIdentityField(view_name='user-detail')
 
