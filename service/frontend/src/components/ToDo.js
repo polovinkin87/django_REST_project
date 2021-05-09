@@ -1,27 +1,38 @@
 import React from 'react'
 
 
-const ToDoListItem = ({item}) => {
+const ToDoListItem = ({todos, deleteToDo}) => {
     return (
         <tr>
-            <td>{item.text}</td>
-            <td>{item.create_at}</td>
-            <td>{item.project}</td>
-            <td>{item.creator}</td>
+            <td>
+                {todos.project}
+            </td>
+            <td>
+                <button onClick={() => deleteToDo(todos.id)} type='button'>Delete</button>
+            </td>
+            <td>
+                {todos.text}
+            </td>
+            <td>
+                {JSON.stringify(todos.creator)}
+            </td>
         </tr>
     )
 }
 
-const ToDoList = ({items}) => {
+const ToDoList = ({todos, deleteToDo}) => {
     return (
         <table>
-            <tr>
-                <th>Text</th>
-                <th>Create_at</th>
-                <th>Project</th>
-                <th>Creator</th>
-            </tr>
-            {items.map((item) => <ToDoListItem item={item} />)}
+            <th>
+                ProjectName
+            </th>
+            <th>
+                ProjectText
+            </th>
+            <th>
+                ProjectUsers
+            </th>
+            {todos.map((todos) => <ToDoListItem todos={todos} deleteToDo={deleteToDo}/>)}
         </table>
     )
 }

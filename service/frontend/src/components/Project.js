@@ -1,31 +1,46 @@
 import React from 'react'
 import {
-  Link,
-  useParams
+  BrowserRouter, Route, Link, Switch
 } from "react-router-dom";
 
 
-const ProjectListItem = ({item}) => {
-    let link_to = `/project/${item.id}`
+const ProjectListItem = ({projects, deleteProject}) => {
     return (
         <tr>
-            <td>{item.name}</td>
-            <td>{item.text}</td>
+            <td>
+                {projects.name}
+            </td>
+            <td>
+                <button onClick={() => deleteProject(projects.id)} type='button'>Delete</button>
+            </td>
+            <td>
+                {projects.text}
+            </td>
+            <td>
+                {JSON.stringify(projects.users)}
+            </td>
         </tr>
     )
 }
 
-const ProjectList = ({items}) => {
+const ProjectList = ({projects, deleteProject}) => {
     return (
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Text</th>
-                <th></th>
-            </tr>
-            {items.map((item) => <ProjectListItem item={item} />)}
-        </table>
+        <div>
+            <table>
+                <th>
+                    ProjectName
+                </th>
+                <th>
+                    ProjectText
+                </th>
+                <th>
+                    ProjectUsers
+                </th>
+                {projects.map((projects) => <ProjectListItem projects={projects} deleteProject={deleteProject}/>)}
+            </table>
+            <Link to='/project/create'>Create</Link>
+        </div>
     )
 }
 
-export {ProjectList}
+export default ProjectList
